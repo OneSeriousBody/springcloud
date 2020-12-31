@@ -1,0 +1,9 @@
+# 常识：访问80端口时不需要写明
+server:
+  port: 80
+
+eureka:
+  client:
+    register-with-eureka: false #不向eureka中配置自己
+    service-url:
+      defaultZone:  http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/,http://eureka7003.com:7003/eureka/
