@@ -16,7 +16,18 @@ info:
   app.name: coderwzt-springcloud
   company.name: blog.coderwzt.com
 
+#zuul:
+#  routes:
+#    mydept.serviceId: springcloud-provider-dept
+#    mydept.path: /mydept/**
 zuul:
+  # 路由相关配置
+  # 原来访问路由 eg:http://www.CoderWZT.com:9527/springcloud-provider-dept/dept/get/1
+  # zull路由配置后访问路由 eg:http://www.CoderWZT.com:9527/coderwzt/mydept/dept/get/1
   routes:
-    mydept.serviceId: springcloud-provider-dept
-    mydept.path: /mydept/**
+    mydept.serviceId: springcloud-provider-dept # eureka注册中心的服务提供方路由名称
+    mydept.path: /mydept/** # 将eureka注册中心的服务提供方路由名称 改为自定义路由名称
+  # 不能再使用这个路径访问了，*： 忽略,隐藏全部的服务名称~
+  ignored-services: "*"
+  # 设置公共的前缀
+  prefix: /coderwzt
